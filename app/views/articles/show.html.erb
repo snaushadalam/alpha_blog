@@ -1,0 +1,16 @@
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+<p>
+<td> <%= link_to 'edit',edit_article_path(@article)%>
+</p>
+<td> <%= link_to 'All Article',articles_path%>
+
