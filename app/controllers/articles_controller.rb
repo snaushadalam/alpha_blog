@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
 
    def index
-     @articles = Article.paginate(page: params[:page], per_page: 2)
+     @articles = Article.paginate(page: params[:page], per_page: 5)
    end
 
 
@@ -60,8 +60,8 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :description)
     end
   def require_same_user
-    if current_user!=@article.user
-      flash[:alert]=" you can edit and delete only logged in account "
+    if current_user!=@article.user && !current_user.admin?
+      flash[:alert]=" you can edit and delete only in your account "
       redirect_to @article
     end
   end
